@@ -12,9 +12,13 @@ public class playerInput : MonoBehaviour
     internal float yplayer;
 
     // attack variables
-    internal bool jPressed;
-    internal bool kPressed;
-    internal bool lPressed;
+    internal bool shurikenDown;
+    internal bool sliceDown;
+    internal bool heavySliceDown;
+    public KeyCode shuriken = KeyCode.J;
+    public KeyCode slice = KeyCode.K;
+    public KeyCode heavyslice = KeyCode.L;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +32,9 @@ public class playerInput : MonoBehaviour
         xplayer = Input.GetAxisRaw("Horizontal");
         yplayer = Input.GetAxisRaw("Vertical");
 
+        shurikenDown = Input.GetKeyDown(shuriken);
+        sliceDown = Input.GetKeyDown(slice);
+        heavySliceDown = Input.GetKeyDown(heavyslice);
 
     }
 }

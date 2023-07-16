@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3408670592494285473}
   - component: {fileID: -4218087634085007796}
   - component: {fileID: 8890617786361307450}
+  - component: {fileID: 3081840959170819403}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -152,6 +153,9 @@ MonoBehaviour:
   playerInput: {fileID: 8890617786361307450}
   playerMove: {fileID: -4218087634085007796}
   animator: {fileID: 8329872811749286485}
+  destination: {fileID: 2110193432505953411, guid: aec7afe24ca2048258cef3d383c39a41, type: 3}
+  rigidobdy2D: {fileID: 4573058311082371952}
+  renderer: {fileID: 7642548394211615235}
 --- !u!114 &-4218087634085007796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,10 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMain: {fileID: 3408670592494285473}
-  destination: {fileID: 0}
-  sr: {fileID: 0}
   movespeed: 5
-  rb: {fileID: 0}
   distance: 5
 --- !u!114 &8890617786361307450
 MonoBehaviour:
@@ -183,3 +184,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playermain: {fileID: 3408670592494285473}
+  shuriken: 106
+  slice: 107
+  heavyslice: 108
+--- !u!114 &3081840959170819403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2354510131960673877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38291fe5d162453b9047c7c4dfd4077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMain: {fileID: 3408670592494285473}

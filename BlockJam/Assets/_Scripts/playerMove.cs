@@ -7,13 +7,13 @@ public class playerMove : MonoBehaviour
     [SerializeField]
     playerMain playerMain;
 
-    public GameObject destination;
-    public SpriteRenderer sr;
+    //public GameObject destination;
+    //public SpriteRenderer sr;
 
     [Header("variables")]
     public float movespeed = 5f;
     Vector2 movement;
-    public Rigidbody2D rb;
+    //public Rigidbody2D rb;
     public float distance = 5f;
 
     // Start is called before the first frame update
@@ -30,20 +30,20 @@ public class playerMove : MonoBehaviour
 
         if (movement.sqrMagnitude > 0)
         {
-            Move((Vector2)sr.bounds.size * movement * distance);
-            // playerMain.animator.SetTrigger("Dash");
+            Move((Vector2)playerMain.renderer.bounds.size * movement * distance);
+            playerMain.animator.SetTrigger("Dash");
         }
         
     }
 
     private void FixedUpdate()
     {
-        rb.position = Vector2.MoveTowards(rb.position, destination.transform.position, movespeed);
+        playerMain.rigidobdy2D.position = Vector2.MoveTowards(playerMain.rigidobdy2D.position, playerMain.destination.transform.position, movespeed);
     }
 
     private void Move(Vector2 length)
     {
-        destination.transform.position = (Vector2)transform.position + length;
+        playerMain.destination.transform.position = (Vector2)transform.position + length;
     }
 
 
