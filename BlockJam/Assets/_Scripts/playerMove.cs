@@ -19,7 +19,7 @@ public class playerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerMain.destination.transform.position = playerMain.rigidobdy2D.transform.position;
+        playerMain.destination.transform.position = playerMain.playerRigidbody2D.transform.position;
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class playerMove : MonoBehaviour
         movement.y = playerMain.playerInput.yplayer;
         if (movement.sqrMagnitude > 0)
         {
-            Move((Vector2)playerMain.renderer.bounds.size * movement * distance);
+            Move((Vector2)playerMain.GetComponent<Renderer>().bounds.size * movement * distance);
             if (playerMain.playerInput.attacking)
             {
                 playerMain.animator.SetTrigger("Dash");
@@ -39,7 +39,7 @@ public class playerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerMain.rigidobdy2D.position = Vector2.MoveTowards(playerMain.rigidobdy2D.position, playerMain.destination.transform.position, movespeed);
+        playerMain.playerRigidbody2D.position = Vector2.MoveTowards(playerMain.playerRigidbody2D.position, playerMain.destination.transform.position, movespeed);
     }
 
     private void Move(Vector2 length)

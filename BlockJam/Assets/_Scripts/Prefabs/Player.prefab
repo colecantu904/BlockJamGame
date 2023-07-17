@@ -36,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7642548394211615235
 SpriteRenderer:
@@ -153,9 +153,14 @@ MonoBehaviour:
   playerInput: {fileID: 8890617786361307450}
   playerMove: {fileID: -4218087634085007796}
   animator: {fileID: 8329872811749286485}
-  destination: {fileID: 2110193432505953411, guid: aec7afe24ca2048258cef3d383c39a41, type: 3}
-  rigidobdy2D: {fileID: 4573058311082371952}
-  renderer: {fileID: 7642548394211615235}
+  destination: {fileID: 2110193432505953411, guid: aec7afe24ca2048258cef3d383c39a41,
+    type: 3}
+  playerRigidbody2D: {fileID: 4573058311082371952}
+  rend: {fileID: 7642548394211615235}
+  shurikenGameObject: {fileID: 7457354038847562516, guid: 058a6ad55630daa4eb23e909a1f86fcc,
+    type: 3}
+  shootLocation: {fileID: 2160920086233010446, guid: 5b9862ccd7fe0f542a0f1fd934a7871b,
+    type: 3}
 --- !u!114 &-4218087634085007796
 MonoBehaviour:
   m_ObjectHideFlags: 0

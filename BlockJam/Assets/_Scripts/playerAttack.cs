@@ -11,7 +11,7 @@ public class playerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerMain.shootLocation.transform.position = playerMain.playerRigidbody2D.transform.position;
     }
 
     // Update is called once per frame
@@ -37,6 +37,7 @@ public class playerAttack : MonoBehaviour
     }
     public void shuriken()
     {
+        Instantiate(playerMain.shurikenGameObject,playerMain.shootLocation.transform.position,playerMain.shootLocation.transform.rotation);
         Debug.Log("shurkiken");
     }
 

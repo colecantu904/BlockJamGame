@@ -21,8 +21,10 @@ public class playerMain : MonoBehaviour
 
     [Header("Movement Objects")]
     public GameObject destination;
-    public Rigidbody2D rigidobdy2D;
-    public SpriteRenderer renderer;
+    public Rigidbody2D playerRigidbody2D;
+    public SpriteRenderer rend;
 
-
+    [Header("Attack Objects")]
+    public GameObject shurikenGameObject;
+    public GameObject shootLocation;
 }
