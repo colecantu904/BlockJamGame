@@ -17,6 +17,11 @@ public class playerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Attack();
+    }
+
+    private void Attack()
+    {
         if (playerMain.playerInput.shurikenDown)
         {
             shuriken();
@@ -30,7 +35,6 @@ public class playerAttack : MonoBehaviour
             heavyslice();
         }
     }
-
     public void shuriken()
     {
         Debug.Log("shurkiken");
@@ -39,6 +43,7 @@ public class playerAttack : MonoBehaviour
     public void slice()
     {
         playerMain.animator.SetTrigger("Attack");
+        Debug.Log("slice");
     }
 
     public void heavyslice()

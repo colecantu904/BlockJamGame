@@ -19,20 +19,10 @@ public class playerMain : MonoBehaviour
     [SerializeField]
     internal Animator animator;
 
-    [Header("Movemtn Objects")]
+    [Header("Movement Objects")]
     public GameObject destination;
     public Rigidbody2D rigidobdy2D;
     public SpriteRenderer renderer;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -12,9 +12,11 @@ public class playerInput : MonoBehaviour
     internal float yplayer;
 
     // attack variables
-    internal bool shurikenDown;
-    internal bool sliceDown;
-    internal bool heavySliceDown;
+    internal bool shurikenDown =false;
+    internal bool sliceDown = false;
+    internal bool heavySliceDown = false;
+    internal bool wasdDown = false;
+    internal bool attacking = false;
     public KeyCode shuriken = KeyCode.J;
     public KeyCode slice = KeyCode.K;
     public KeyCode heavyslice = KeyCode.L;
@@ -31,10 +33,12 @@ public class playerInput : MonoBehaviour
     {
         xplayer = Input.GetAxisRaw("Horizontal");
         yplayer = Input.GetAxisRaw("Vertical");
+        wasdDown = Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical");
 
         shurikenDown = Input.GetKeyDown(shuriken);
         sliceDown = Input.GetKeyDown(slice);
         heavySliceDown = Input.GetKeyDown(heavyslice);
 
+        attacking = shurikenDown || sliceDown || heavySliceDown;
     }
 }
