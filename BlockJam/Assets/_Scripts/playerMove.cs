@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class playerMove : MonoBehaviour
 {
@@ -30,11 +31,9 @@ public class playerMove : MonoBehaviour
         if (movement.sqrMagnitude > 0)
         {
             Move((Vector2)playerMain.GetComponent<Renderer>().bounds.size * movement * distance);
-            if (playerMain.playerInput.attacking)
-            {
-                playerMain.animator.SetTrigger("Dash");
-            }
+            Debug.Log("moving");
         }
+        
     }
 
     private void FixedUpdate()
@@ -44,7 +43,7 @@ public class playerMove : MonoBehaviour
 
     private void Move(Vector2 length)
     {
-        if (playerMain.playerInput.wasdDown)
+        if (playerMain.playerInput.xDown || playerMain.playerInput.yDown)
         {
             playerMain.destination.transform.position = (Vector2)transform.position + length;
         }

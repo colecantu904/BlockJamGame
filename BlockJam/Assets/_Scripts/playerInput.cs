@@ -10,6 +10,8 @@ public class playerInput : MonoBehaviour
     // movement variables
     internal float xplayer;
     internal float yplayer;
+    internal bool xDown;
+    internal bool yDown;
 
     // attack variables
     internal bool shurikenDown =false;
@@ -33,7 +35,8 @@ public class playerInput : MonoBehaviour
     {
         xplayer = Input.GetAxisRaw("Horizontal");
         yplayer = Input.GetAxisRaw("Vertical");
-        wasdDown = Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical");
+        xDown = Input.GetButtonDown("Horizontal");
+        yDown =  Input.GetButtonDown("Vertical");
 
         shurikenDown = Input.GetKeyDown(shuriken);
         sliceDown = Input.GetKeyDown(slice);
