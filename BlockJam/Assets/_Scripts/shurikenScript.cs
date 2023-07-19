@@ -5,15 +5,18 @@ using UnityEngine;
 public class shurikenScript : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public float speed = 20f;
     private float rotZ;
     public float rotSpeed = 5f;
+    public playerMain playerMain;
     // Start is called before the first frame update
     void Start()
     {
-        rb.velocity = Vector2.up * speed;
+        rb.velocity = transform.up * playerMain.shurikenSpeed;
     }
-
+    private void Awake()
+    {
+        playerMain = GameObject.FindGameObjectWithTag("Player").GetComponent<playerMain>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -25,9 +28,17 @@ public class shurikenScript : MonoBehaviour
     // destroy when it reaches the game boundary
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("exited");
+        //Debug.Log("exited");
         if (collision.tag == "MainCamera")
         {
+            Destroy(gameObject);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Enemy")
+        {
+            collision.GetComponent<slimeScript>().TakeDamage(playerMain.shurikenDamage);
             Destroy(gameObject);
         }
     }

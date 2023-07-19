@@ -50,5 +50,23 @@ public class playerAttack : MonoBehaviour
     public void heavyslice()
     {
         Debug.Log("HeavySlice");
+        playerMain.heavyDashing = true;
+
+        StartCoroutine(HeavyDash(playerMain.heavyDashDelay));
+    }
+    private IEnumerator HeavyDash(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Debug.Log("ashgsdfh");
+        playerMain.GetComponent<playerMove>().Move(playerMain.shootLocation.transform.up * playerMain.heavyDashDistance);
+        StartCoroutine(DontMoveYet());
+        playerMain.playerRigidbody2D.position = Vector2.MoveTowards(playerMain.playerRigidbody2D.position, playerMain.destination.transform.position, playerMain.heavyDashSpeed);
+    }
+    private IEnumerator DontMoveYet()
+    {
+        Debug.Log("not move");
+
+        yield return new WaitForSeconds(playerMain.heavyDashDelay);
+        playerMain.heavyDashing=false;
     }
 }

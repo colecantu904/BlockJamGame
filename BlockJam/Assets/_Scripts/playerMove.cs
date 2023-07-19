@@ -30,24 +30,29 @@ public class playerMove : MonoBehaviour
         movement.y = playerMain.playerInput.yplayer;
         if (movement.sqrMagnitude > 0)
         {
-            Move((Vector2)playerMain.GetComponent<Renderer>().bounds.size * movement * distance);
-            Debug.Log("moving");
+            if ((playerMain.playerInput.xDown || playerMain.playerInput.yDown) && !playerMain.heavyDashing)
+            {
+                Move((Vector2)playerMain.GetComponent<Renderer>().bounds.size * movement * distance);
+            }
+            //Debug.Log("moving");
+            
         }
         
     }
 
     private void FixedUpdate()
     {
-        playerMain.playerRigidbody2D.position = Vector2.MoveTowards(playerMain.playerRigidbody2D.position, playerMain.destination.transform.position, movespeed);
+        
+            playerMain.playerRigidbody2D.position = Vector2.MoveTowards(playerMain.playerRigidbody2D.position, playerMain.destination.transform.position, movespeed);
+        
     }
 
-    private void Move(Vector2 length)
+    public void Move(Vector2 length)
     {
-        if (playerMain.playerInput.xDown || playerMain.playerInput.yDown)
-        {
-            playerMain.destination.transform.position = (Vector2)transform.position + length;
-        }
+        playerMain.destination.transform.position = (Vector2)transform.position + length;
+        
     }
+    
 
 
 }
