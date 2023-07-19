@@ -9,7 +9,7 @@ public class Animation : MonoBehaviour
 
 
     // animations movement variables
-    public float lastframetimer = 1f;
+    public float lastframetimer = 1000f;
     private float holdtimer;
     public AnimationClip sideDash;
     public AnimationClip downDash;
@@ -23,35 +23,40 @@ public class Animation : MonoBehaviour
  
     void Update()
     {
+        //flip the player in the right direction
+        if (playerMain.rend.transform.position.x > 0)
+        {
+            playerMain.rend.flipX = true;
+        }
+        else
+        {
+            playerMain.rend.flipX = false;
+        }
+
+
+        if (playerMain.rend.transform.position.y > 0 && Input.GetKeyDown(KeyCode.S))
+        {
+            playerMain.rend.flipY = true;
+        }
+        else
+        {
+            playerMain.rend.flipY = false;
+        }
+
+
+
         // horizantal dash
         if (playerMain.playerInput.xDown)
         {
-            if (holdtimer > lastframetimer)
-            {
-                playerMain.animator.SetTrigger("sideDash");
-                holdtimer += Time.deltaTime;
-            }
-            else
-            {
-                playerMain.animator.Play(sideDash.name, 0, sideDash.length);
-            }
-
+            playerMain.animator.Play(sideDash.name, 0, sideDash.length);
         }
 
         // vertical dash
         if (playerMain.playerInput.yDown)
         {
-            if (holdtimer > lastframetimer)
-            {
-                playerMain.animator.SetTrigger("upDash");
-                holdtimer += Time.deltaTime;
-            }
-            else
-            {
-                playerMain.animator.Play(downDash.name, 0, downDash.length);
-            }
+            playerMain.animator.Play(downDash.name, 0, downDash.length);
         }
-        holdtimer = 0;
+        
 
     }
 }
