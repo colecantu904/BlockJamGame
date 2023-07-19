@@ -20,4 +20,15 @@ public class shurikenScript : MonoBehaviour
         rotZ += Time.deltaTime * rotSpeed;
         transform.rotation = Quaternion.Euler(0,0,rotZ);
     }
+
+
+    // destroy when it reaches the game boundary
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("exited");
+        if (collision.tag == "MainCamera")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
