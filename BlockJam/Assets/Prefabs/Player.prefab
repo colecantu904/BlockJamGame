@@ -222,3 +222,5 @@ MonoBehaviour:
   lastframetimer: 1
   sideDash: {fileID: 7400000, guid: d0900cc8a56464c9c8e3df4dac74b417, type: 2}
   downDash: {fileID: 7400000, guid: 421b1131fe1244936a993b7dbdb4ddc7, type: 2}
+  sideDash2: {fileID: 7400000, guid: 754ef82a2b16d4c9cbc6c978ec08c29d, type: 2}
+  upDash2: {fileID: 7400000, guid: 9ebe2d2b52705428c9a6f2be8c90716f, type: 2}

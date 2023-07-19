@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Animation : MonoBehaviour
@@ -9,10 +10,7 @@ public class Animation : MonoBehaviour
 
 
     // animations movement variables
-    public float lastframetimer = 1000f;
     private float holdtimer;
-    public AnimationClip sideDash;
-    public AnimationClip downDash;
 
 
     void Start()
@@ -23,7 +21,7 @@ public class Animation : MonoBehaviour
  
     void Update()
     {
-        //flip the player in the right direction
+        //flip the player in the right direction for idle
         if (playerMain.rend.transform.position.x > 0)
         {
             playerMain.rend.flipX = true;
@@ -34,27 +32,33 @@ public class Animation : MonoBehaviour
         }
 
 
-        if (playerMain.rend.transform.position.y > 0 && Input.GetKeyDown(KeyCode.S))
-        {
-            playerMain.rend.flipY = true;
-        }
-        else
-        {
-            playerMain.rend.flipY = false;
-        }
 
-
-
-        // horizantal dash
+        // horizantal dash "animation"
         if (playerMain.playerInput.xDown)
         {
-            playerMain.animator.Play(sideDash.name, 0, sideDash.length);
+            if ((playerMain.playerInput.xplayer == -1 && playerMain.rend.transform.position.x < 0) || (playerMain.playerInput.xplayer == 1 && playerMain.rend.transform.position.x > 0))
+            {
+                playerMain.animator.SetTrigger("dash2");
+                
+            }
+            else
+            {
+                playerMain.animator.SetTrigger("dash1");
+            }
+            
         }
 
-        // vertical dash
+        // vertical dash "animation"
         if (playerMain.playerInput.yDown)
         {
-            playerMain.animator.Play(downDash.name, 0, downDash.length);
+            if (playerMain.playerInput.yplayer == -1)
+            {
+                playerMain.animator.SetTrigger("updash2");
+            }
+            else
+            {
+                playerMain.animator.SetTrigger("updash1");
+            }
         }
         
 
