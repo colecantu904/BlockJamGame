@@ -17,7 +17,10 @@ public class playerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Attack();
+        if (!playerMain.heavyDashing)
+        {
+            Attack();
+        }
     }
 
     private void Attack()
@@ -35,17 +38,40 @@ public class playerAttack : MonoBehaviour
             heavyslice();
         }
     }
+
+
     public void shuriken()
     {
         Instantiate(playerMain.shurikenGameObject,playerMain.shootLocation.transform.position,playerMain.shootLocation.transform.rotation);
         Debug.Log("shurkiken");
     }
 
+
+
     public void slice()
     {
-        playerMain.animator.SetTrigger("Attack");
-        Debug.Log("slice");
+        if (!playerMain.heavyDashing)
+        {
+            playerMain.animator.SetTrigger("Attack");
+        }
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(playerMain.shootLocation.transform.position, playerMain.sliceRadius);
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.tag == "Enemy")
+            {
+                enemy.GetComponent<slimeScript>().TakeDamage(3);
+                // IF YOU ADD ANOTHER ENEMY YOU NEED A SEPERATE CALL FOR ITS SCRIPT COMPONENT HERE
+            }
+        }
     }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(playerMain.shootLocation.transform.position, playerMain.sliceRadius);
+    }
+
+
 
     public void heavyslice()
     {

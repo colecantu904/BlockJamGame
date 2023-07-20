@@ -29,6 +29,8 @@ public class playerMain : MonoBehaviour
     public GameObject shootLocation;
     public int shurikenDamage = 1;
     public float shurikenSpeed = 20f;
+    public int sliceDamage = 3;
+    public float sliceRadius = 5f;
     [Header("Heavy Slice")]
     public float heavyDashDelay = 10f;
     public float heavyDashDistance = 7.5f;
@@ -38,4 +40,8 @@ public class playerMain : MonoBehaviour
     public int slimeHealth = 10;
     public float slimeSpeed = 5f;
     public float slimeKnockback = 5f;
+
+    [Header("UI Objects")]
+    public script enemyHealthBar;
+
 }

@@ -32,32 +32,39 @@ public class Animation : MonoBehaviour
         }
 
 
-
-        // horizantal dash "animation"
-        if (playerMain.playerInput.xDown)
+        if (playerMain.heavyDashing)
         {
-            if ((playerMain.playerInput.xplayer == -1 && playerMain.rend.transform.position.x < 0) || (playerMain.playerInput.xplayer == 1 && playerMain.rend.transform.position.x > 0))
-            {
-                playerMain.animator.SetTrigger("dash2");
-                
-            }
-            else
-            {
-                playerMain.animator.SetTrigger("dash1");
-            }
-            
+            // make the heavy dash animation bruh
+            playerMain.animator.SetTrigger("heavyDash");
         }
-
-        // vertical dash "animation"
-        if (playerMain.playerInput.yDown)
+        else
         {
-            if (playerMain.playerInput.yplayer == -1)
+            // horizantal dash "animation"
+            if (playerMain.playerInput.xDown)
             {
-                playerMain.animator.SetTrigger("updash2");
+                if ((playerMain.playerInput.xplayer == -1 && playerMain.rend.transform.position.x < 0) || (playerMain.playerInput.xplayer == 1 && playerMain.rend.transform.position.x > 0))
+                {
+                    playerMain.animator.SetTrigger("dash2");
+
+                }
+                else
+                {
+                    playerMain.animator.SetTrigger("dash1");
+                }
+
             }
-            else
+
+            // vertical dash "animation"
+            if (playerMain.playerInput.yDown)
             {
-                playerMain.animator.SetTrigger("updash1");
+                if (playerMain.playerInput.yplayer == -1)
+                {
+                    playerMain.animator.SetTrigger("updash2");
+                }
+                else
+                {
+                    playerMain.animator.SetTrigger("updash1");
+                }
             }
         }
         

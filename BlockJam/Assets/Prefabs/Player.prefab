@@ -38,7 +38,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7642548394211615235
 SpriteRenderer:
@@ -162,6 +162,19 @@ MonoBehaviour:
   shurikenGameObject: {fileID: 7457354038847562516, guid: 058a6ad55630daa4eb23e909a1f86fcc,
     type: 3}
   shootLocation: {fileID: 2160920086233010446, guid: 5b9862ccd7fe0f542a0f1fd934a7871b,
+    type: 3}
+  shurikenDamage: 1
+  shurikenSpeed: 20
+  sliceDamage: 3
+  sliceRadius: 3.5
+  heavyDashDelay: 10
+  heavyDashDistance: 7.5
+  heavyDashing: 0
+  heavyDashSpeed: 10
+  slimeHealth: 10
+  slimeSpeed: 2
+  slimeKnockback: 5
+  enemyHealthBar: {fileID: 5626834864278041052, guid: 75a6da1d19dce4d9ab6fb08feb583aa7,
     type: 3}
 --- !u!114 &-4218087634085007796
 MonoBehaviour:

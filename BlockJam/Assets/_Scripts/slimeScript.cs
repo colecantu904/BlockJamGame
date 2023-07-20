@@ -8,10 +8,17 @@ public class slimeScript : MonoBehaviour
     [SerializeField] private playerMain playerMain;
     [SerializeField] private int health;
     private bool hit = false;
+
+    private void Start()
+    {
+        playerMain.enemyHealthBar.GetComponent<script>().setHealth(health);
+    }
+
     void Awake()
     {
         playerMain = GameObject.FindGameObjectWithTag("Player").GetComponent<playerMain>();
         health = playerMain.slimeHealth;
+       
     }
     private void FixedUpdate()
     {
@@ -33,7 +40,8 @@ public class slimeScript : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Debug.Log("Hit");
-        health-=damage;
+        playerMain.enemyHealthBar.GetComponent<script>().healthLoss(damage);
+        health -= damage;
         hit = true;
         if (health <= 0)
         {
