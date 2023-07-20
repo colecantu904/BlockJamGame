@@ -174,8 +174,8 @@ MonoBehaviour:
   slimeHealth: 10
   slimeSpeed: 2
   slimeKnockback: 5
-  enemyHealthBar: {fileID: 5626834864278041052, guid: 75a6da1d19dce4d9ab6fb08feb583aa7,
-    type: 3}
+  health: 0
+  sceneLoader: {fileID: 0}
 --- !u!114 &-4218087634085007796
 MonoBehaviour:
   m_ObjectHideFlags: 0

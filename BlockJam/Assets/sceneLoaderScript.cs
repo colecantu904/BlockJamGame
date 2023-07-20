@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class sceneLoaderScript : MonoBehaviour
+{
+
+    public Animator sceneAnimator;
+    public float transitinTime = 1f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //if (Input.GetMouseButton(0))
+        //{
+            //deathScene();
+
+        //}
+    }
+
+    public void deathScene()
+    {
+        StartCoroutine(loadScene(1));
+    }
+
+    public IEnumerator loadScene(int index)
+    {
+        Debug.Log("loading");
+        sceneAnimator.SetTrigger("DeathTransition");
+
+        yield return new WaitForSeconds(transitinTime);
+
+        SceneManager.LoadScene(index);
+    }
+}

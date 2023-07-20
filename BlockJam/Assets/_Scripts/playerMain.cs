@@ -19,6 +19,9 @@ public class playerMain : MonoBehaviour
     [SerializeField]
     internal Animator animator;
 
+    [SerializeField]
+    internal sceneLoaderScript sceneLoader;
+
     [Header("Movement Objects")]
     public GameObject destination;
     public Rigidbody2D playerRigidbody2D;
@@ -42,6 +45,8 @@ public class playerMain : MonoBehaviour
     public float slimeKnockback = 5f;
 
     [Header("UI Objects")]
-    public script enemyHealthBar;
+    public int health;
+    
+
 
 }
