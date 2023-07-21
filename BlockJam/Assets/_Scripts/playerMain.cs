@@ -26,6 +26,7 @@ public class playerMain : MonoBehaviour
     public GameObject destination;
     public Rigidbody2D playerRigidbody2D;
     public SpriteRenderer rend;
+    public GameObject Player;
 
     [Header("Attack Objects")]
     public GameObject shurikenGameObject;

@@ -24,6 +24,15 @@ public class playerInput : MonoBehaviour
     public KeyCode heavyslice = KeyCode.L;
 
 
+    // teleport variables
+    internal bool teleport1;
+    internal bool teleport2;
+    internal bool teleport3;
+    public bool teleport1out;
+    public bool teleport2out;
+    public bool teleport3out;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +42,7 @@ public class playerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         xplayer = Input.GetAxisRaw("Horizontal");
         yplayer = Input.GetAxisRaw("Vertical");
         xDown = Input.GetButtonDown("Horizontal");
@@ -43,5 +53,10 @@ public class playerInput : MonoBehaviour
         heavySliceDown = Input.GetKeyDown(heavyslice);
 
         attacking = shurikenDown || sliceDown || heavySliceDown;
+
+
+        teleport1 = Input.GetKeyDown(KeyCode.U);
+        teleport2 = Input.GetKeyDown(KeyCode.I);
+        teleport3 = Input.GetKeyDown(KeyCode.O);
     }
 }

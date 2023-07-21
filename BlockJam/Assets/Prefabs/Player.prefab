@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3081840959170819403}
   - component: {fileID: -7760879086506352853}
   - component: {fileID: 4280121628381868635}
+  - component: {fileID: 5072835507858341169}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -38,7 +39,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7642548394211615235
 SpriteRenderer:
@@ -155,10 +156,12 @@ MonoBehaviour:
   playerInput: {fileID: 8890617786361307450}
   playerMove: {fileID: -4218087634085007796}
   animator: {fileID: 8329872811749286485}
+  sceneLoader: {fileID: 0}
   destination: {fileID: 2110193432505953411, guid: aec7afe24ca2048258cef3d383c39a41,
     type: 3}
   playerRigidbody2D: {fileID: 4573058311082371952}
   rend: {fileID: 7642548394211615235}
+  Player: {fileID: 0}
   shurikenGameObject: {fileID: 7457354038847562516, guid: 058a6ad55630daa4eb23e909a1f86fcc,
     type: 3}
   shootLocation: {fileID: 2160920086233010446, guid: 5b9862ccd7fe0f542a0f1fd934a7871b,
@@ -175,7 +178,6 @@ MonoBehaviour:
   slimeSpeed: 2
   slimeKnockback: 5
   health: 0
-  sceneLoader: {fileID: 0}
 --- !u!114 &-4218087634085007796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +209,9 @@ MonoBehaviour:
   shuriken: 106
   slice: 107
   heavyslice: 108
+  teleport1out: 0
+  teleport2out: 0
+  teleport3out: 0
 --- !u!114 &3081840959170819403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,3 +283,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6496184, y: 2.3207092}
   m_EdgeRadius: 0
+--- !u!114 &5072835507858341169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2354510131960673877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0e4e8d5f9e242dbb3d2ed240380979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMain: {fileID: 0}
+  Uteleport: {fileID: 0}
+  Iteleport: {fileID: 0}
+  Oteleport: {fileID: 0}
