@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class buttonScript : MonoBehaviour
+public class startButtonScript : MonoBehaviour
 {
 
-    public void replay()
+    public void beginGame()
     {
         SceneManager.LoadScene(1);
     }
-
-
 
 }

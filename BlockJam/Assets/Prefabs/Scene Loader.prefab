@@ -103,7 +103,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!95 &584266972316989364
 Animator:
   serializedVersion: 5
@@ -156,7 +156,7 @@ Transform:
   m_Children:
   - {fileID: 7022800558713894577}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &106928460611978222
 MonoBehaviour:

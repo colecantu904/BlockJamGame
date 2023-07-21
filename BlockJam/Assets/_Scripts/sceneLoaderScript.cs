@@ -17,7 +17,7 @@ public class sceneLoaderScript : MonoBehaviour
 
     public void deathScene()
     {
-        StartCoroutine(loadScene(1));
+        StartCoroutine(loadScene(2));
     }
 
     public IEnumerator loadScene(int index)
