@@ -14,6 +14,9 @@ public class HealthScript : MonoBehaviour
     [SerializeField]
     PlayerBar playerhealthbar;
 
+    [SerializeField]
+    sceneLoaderScript sceneLoader;
+
     private void Awake()
     {
         
@@ -35,7 +38,7 @@ public class HealthScript : MonoBehaviour
             health -= collision.collider.GetComponent<slimeScript>().slimeDamage;
             if (health <= 0)
             {
-                //playerMain.sceneLoader.deathScene();
+                sceneLoader.deathScene();
             }
 
         }

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class deadplayerScript : MonoBehaviour
 {
+    [SerializeField]
+    Animator animator;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("player Dead");
+        
     }
 
     // Update is called once per frame
