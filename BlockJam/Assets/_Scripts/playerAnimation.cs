@@ -37,7 +37,7 @@ public class Animation : MonoBehaviour
             // make the heavy dash animation bruh
             playerMain.animator.SetTrigger("heavyDash");
         }
-        else
+        else if (!playerMain.isDamaged)
         {
             // horizantal dash "animation"
             if (playerMain.playerInput.xDown)

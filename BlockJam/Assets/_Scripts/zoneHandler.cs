@@ -22,19 +22,24 @@ public class zoneHandler : MonoBehaviour
     public void aimLeft()
     {
         playerMain.shootLocation.transform.rotation = Quaternion.Euler(0, 0, 90);
+        playerMain.heavySliceAngle = 90f;
     }
     public void aimRight()
     {
         playerMain.shootLocation.transform.rotation = Quaternion.Euler(0, 0, 270);
+        playerMain.heavySliceAngle = 90f;
 
     }
     public void aimUp()
     {
         playerMain.shootLocation.transform.rotation = Quaternion.Euler(0, 0, 0);
+        playerMain.heavySliceAngle = 0f;
 
     }
     public void aimDown()
     {
         playerMain.shootLocation.transform.rotation = Quaternion.Euler(0, 0, 180);
+        playerMain.heavySliceAngle = 0f;
+
     }
 }

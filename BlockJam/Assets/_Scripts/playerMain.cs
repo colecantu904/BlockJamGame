@@ -41,6 +41,8 @@ public class playerMain : MonoBehaviour
     public int sliceDamage = 3;
     public float sliceRadius = 5f;
     public bool isDamaged;
+    public float heavySliceAngle = 90f;
+
 
     [Header("Heavy Slice")]
     public float heavyDashDelay = 10f;
@@ -54,7 +56,7 @@ public class playerMain : MonoBehaviour
 
     [Header("UI Objects")]
     public int health;
-    
+
 
 
 }

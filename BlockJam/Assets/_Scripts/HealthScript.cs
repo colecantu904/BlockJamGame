@@ -17,13 +17,11 @@ public class HealthScript : MonoBehaviour
     [SerializeField]
     sceneLoaderScript sceneLoader;
 
+
     public AnimationClip damaged;
     public float hurtTime = 1f;
-
-    private void Awake()
-    {
-        
-    }
+    private Vector2 direction;
+    public float playerKnockback = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -39,23 +37,30 @@ public class HealthScript : MonoBehaviour
     {
         if (collision.collider.tag == "Enemy")
         {
-            StartCoroutine(knockback());
-
-            // IF U WANT TO ADD ANOTHER ENEMY A NEW CALL IS NEEDED
-            playerhealthbar.barDamage(collision.collider.GetComponent<slimeScript>().slimeDamage);
-            health -= collision.collider.GetComponent<slimeScript>().slimeDamage;
-            if (health <= 0)
+            if (!playerMain.heavyDashing)
             {
-                sceneLoader.deathScene();
-            }
+                StartCoroutine(knockback(collision.collider.gameObject));
 
+
+
+                // IF U WANT TO ADD ANOTHERl ENEMY A NEW CALL IS NEEDED
+                playerhealthbar.barDamage(collision.collider.GetComponent<slimeScript>().slimeDamage);
+                health -= collision.collider.GetComponent<slimeScript>().slimeDamage;
+                if (health <= 0)
+                {
+                    sceneLoader.deathScene();
+                }
+            }
         }
     }
 
 
-    public IEnumerator knockback()
+    public IEnumerator knockback(GameObject slime)
     {
+        
         playerMain.animator.Play(damaged.name);
+        direction = slime.GetComponent<slimeScript>().direction;
+        playerMain.playerMove.Move(direction*(Vector2.one*playerKnockback));
         playerMain.isDamaged = true;
 
         // bound the player away from the center

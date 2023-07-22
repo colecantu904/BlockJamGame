@@ -11,7 +11,7 @@ public class slimeScript : MonoBehaviour
     [SerializeField] SlimeHealthBar SlimeHealthBar;
 
     public int slimeDamage = 3;
-
+    public Vector2 direction;
 
 
     void Awake()
@@ -32,7 +32,7 @@ public class slimeScript : MonoBehaviour
     {
         if (!hit)
         {
-            Vector2 direction = (dest.position - transform.position).normalized;
+            direction = (dest.position - transform.position).normalized;
             rb.velocity = direction * playerMain.slimeSpeed;
         }
         else if (hit)

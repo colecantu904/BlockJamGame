@@ -34,7 +34,7 @@ public class playerMove : MonoBehaviour
             {
                 Move((Vector2)playerMain.GetComponent<Renderer>().bounds.size * movement * distance);
             }
-            //Debug.Log("moving");
+            
             
         }
         

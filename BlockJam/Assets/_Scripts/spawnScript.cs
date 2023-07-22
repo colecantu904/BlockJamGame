@@ -35,7 +35,7 @@ public class spawnScript : MonoBehaviour
         }
         else
         {
-            Instantiate(slime);
+            Instantiate(slime, transform.position, transform.rotation);
             holdtimer = 0;
         }
     }
