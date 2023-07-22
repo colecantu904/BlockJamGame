@@ -11,6 +11,11 @@ public class buttonScript : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void resstart()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 
 
 }

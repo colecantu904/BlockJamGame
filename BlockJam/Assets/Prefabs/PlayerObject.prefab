@@ -1095,6 +1095,8 @@ MonoBehaviour:
   playerMain: {fileID: 8703854720195757095}
   playerhealthbar: {fileID: 5148243857828480767}
   sceneLoader: {fileID: 365540185680245547}
+  damaged: {fileID: 7400000, guid: d35ee84e49c194b519894a31c6b122ae, type: 2}
+  hurtTime: 1
 --- !u!114 &8703854720195757095 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3408670592494285473, guid: 7be972f15e9344219837aa5f95618cd4,

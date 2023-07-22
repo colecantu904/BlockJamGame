@@ -30,7 +30,7 @@ public class playerMove : MonoBehaviour
         movement.y = playerMain.playerInput.yplayer;
         if (movement.sqrMagnitude > 0)
         {
-            if ((playerMain.playerInput.xDown || playerMain.playerInput.yDown) && !playerMain.heavyDashing)
+            if ((playerMain.playerInput.xDown || playerMain.playerInput.yDown) && !playerMain.heavyDashing && !playerMain.isDamaged)
             {
                 Move((Vector2)playerMain.GetComponent<Renderer>().bounds.size * movement * distance);
             }

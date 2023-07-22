@@ -17,6 +17,9 @@ public class HealthScript : MonoBehaviour
     [SerializeField]
     sceneLoaderScript sceneLoader;
 
+    public AnimationClip damaged;
+    public float hurtTime = 1f;
+
     private void Awake()
     {
         
@@ -28,12 +31,17 @@ public class HealthScript : MonoBehaviour
         playerhealthbar = GetComponentInChildren<PlayerBar>();
         health = playerHealth;
         playerhealthbar.setHealth(playerHealth);
+
+        playerMain.badKilled = 0;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Enemy")
         {
+            StartCoroutine(knockback());
+
+            // IF U WANT TO ADD ANOTHER ENEMY A NEW CALL IS NEEDED
             playerhealthbar.barDamage(collision.collider.GetComponent<slimeScript>().slimeDamage);
             health -= collision.collider.GetComponent<slimeScript>().slimeDamage;
             if (health <= 0)
@@ -42,6 +50,19 @@ public class HealthScript : MonoBehaviour
             }
 
         }
+    }
+
+
+    public IEnumerator knockback()
+    {
+        playerMain.animator.Play(damaged.name);
+        playerMain.isDamaged = true;
+
+        // bound the player away from the center
+
+        yield return new WaitForSeconds(hurtTime);
+
+        playerMain.isDamaged = false;
     }
 
 

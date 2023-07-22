@@ -52,6 +52,7 @@ public class slimeScript : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            playerMain.badKilled += 1;
         }
     }
 }

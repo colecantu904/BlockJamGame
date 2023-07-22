@@ -170,6 +170,7 @@ MonoBehaviour:
   shurikenSpeed: 20
   sliceDamage: 3
   sliceRadius: 3.5
+  isDamaged: 0
   heavyDashDelay: 10
   heavyDashDistance: 7.5
   heavyDashing: 0

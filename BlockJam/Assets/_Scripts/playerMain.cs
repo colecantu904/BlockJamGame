@@ -22,6 +22,11 @@ public class playerMain : MonoBehaviour
     [SerializeField]
     internal sceneLoaderScript sceneLoader;
 
+    // SCORE VARIABLES
+    public static int score;
+    public static int badKilled;
+
+
     [Header("Movement Objects")]
     public GameObject destination;
     public Rigidbody2D playerRigidbody2D;
@@ -35,6 +40,8 @@ public class playerMain : MonoBehaviour
     public float shurikenSpeed = 20f;
     public int sliceDamage = 3;
     public float sliceRadius = 5f;
+    public bool isDamaged;
+
     [Header("Heavy Slice")]
     public float heavyDashDelay = 10f;
     public float heavyDashDistance = 7.5f;
