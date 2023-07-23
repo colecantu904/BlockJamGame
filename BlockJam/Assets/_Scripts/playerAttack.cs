@@ -8,6 +8,8 @@ public class playerAttack : MonoBehaviour
     playerMain playerMain;
     public bool heavyAttacking = false;
 
+    public AnimationClip dashAnimation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +73,7 @@ public class playerAttack : MonoBehaviour
     }
     public void heavySliceAttack(int damage)
     {
+        playerMain.animator.Play(dashAnimation.name);
         playerMain.heavyDashing = true;
         playerMain.GetComponent<BoxCollider2D>().isTrigger = true;
         StartCoroutine(HeavyDash(playerMain.heavyDashDelay));

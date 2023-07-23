@@ -927,6 +927,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3081840959170819403, guid: 7be972f15e9344219837aa5f95618cd4,
+        type: 3}
+      propertyPath: dashAnimation
+      value: 
+      objectReference: {fileID: 7400000, guid: 2cdebf5c3084a4b2fb9b4f2c4c2076da, type: 2}
     - target: {fileID: 3408670592494285473, guid: 7be972f15e9344219837aa5f95618cd4,
         type: 3}
       propertyPath: renderer
@@ -1081,6 +1086,7 @@ MonoBehaviour:
   sceneLoader: {fileID: 365540185680245547}
   damaged: {fileID: 7400000, guid: d35ee84e49c194b519894a31c6b122ae, type: 2}
   hurtTime: 1
+  playerKnockback: 5
 --- !u!114 &8703854720195757095 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3408670592494285473, guid: 7be972f15e9344219837aa5f95618cd4,
