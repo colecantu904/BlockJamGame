@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Transition
+  - blueslime
+  - red
+  - bounds
+  - yellow
   layers:
   - Default
   - TransparentFX

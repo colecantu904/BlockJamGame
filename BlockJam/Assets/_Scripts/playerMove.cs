@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UIElements;
 
 public class playerMove : MonoBehaviour
 {
     [SerializeField]
     playerMain playerMain;
+    [SerializeField] public GameObject Spawner;
+    private bool outOfBounds = false;
 
     //public GameObject destination;
     //public SpriteRenderer sr;
@@ -30,7 +33,7 @@ public class playerMove : MonoBehaviour
         movement.y = playerMain.playerInput.yplayer;
         if (movement.sqrMagnitude > 0)
         {
-            if ((playerMain.playerInput.xDown || playerMain.playerInput.yDown) && !playerMain.heavyDashing && !playerMain.isDamaged)
+            if ((playerMain.playerInput.xDown || playerMain.playerInput.yDown) && !playerMain.heavyDashing && !playerMain.isDamaged&&!outOfBounds)
             {
                 Move((Vector2)playerMain.GetComponent<Renderer>().bounds.size * movement * distance);
             }
@@ -42,9 +45,13 @@ public class playerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
-            playerMain.playerRigidbody2D.position = Vector2.MoveTowards(playerMain.playerRigidbody2D.position, playerMain.destination.transform.position, movespeed);
-        
+        if (!outOfBounds) playerMain.playerRigidbody2D.position = Vector2.MoveTowards(playerMain.playerRigidbody2D.position, playerMain.destination.transform.position, movespeed);
+        else if (outOfBounds)
+        {
+            playerMain.destination.transform.position = playerMain.playerRigidbody2D.transform.position;
+            playerMain.playerRigidbody2D.position = Vector2.MoveTowards(transform.position, Spawner.transform.position, movespeed);
+
+        }
     }
 
     public void Move(Vector2 length)
@@ -52,7 +59,22 @@ public class playerMove : MonoBehaviour
         playerMain.destination.transform.position = (Vector2)transform.position + length;
         
     }
-    
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("test");
+        if (collision.tag == "bounds")
+        {
+            outOfBounds = true;
 
+            Debug.Log("sagfdg");
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "bounds")
+        {
+            outOfBounds = false;
+        }
+    }
 }

@@ -183,8 +183,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: START
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7b628e53fed1641f58892c3993f178ab, type: 2}
-  m_sharedMaterial: {fileID: 4124418334250441362, guid: 7b628e53fed1641f58892c3993f178ab,
+  m_fontAsset: {fileID: 11400000, guid: e30301436bd41444d8a8a2bc93d695c3, type: 2}
+  m_sharedMaterial: {fileID: 7942015660300945287, guid: e30301436bd41444d8a8a2bc93d695c3,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -317,12 +317,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Controls\n\nMove: \n-W,A,S,D or Arrows\n\nAttacks:\n-Shuriken (J)\n-SLice
-    (K)\n-SuperSlice (L)\n\nTeleport: (U, I, O)\nPress a teleport key to place a
-    retun kunai, then press again to telport back to it.\n"
+  m_text: "Controls\n\nMove: \n-W,A,S,D or Arrows\n\nAttacks:\n-Shuriken (J)\n-Slice
+    (K)\n-SuperSlice (L)x2 Bonus\n\nTeleport: (U, I, O)\nPress a teleport key to
+    place a retun kunai, then press again to telport back to it.\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7b628e53fed1641f58892c3993f178ab, type: 2}
-  m_sharedMaterial: {fileID: 4124418334250441362, guid: 7b628e53fed1641f58892c3993f178ab,
+  m_fontAsset: {fileID: 11400000, guid: e30301436bd41444d8a8a2bc93d695c3, type: 2}
+  m_sharedMaterial: {fileID: 7942015660300945287, guid: e30301436bd41444d8a8a2bc93d695c3,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -347,8 +347,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -435,8 +435,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 71}
-  m_SizeDelta: {x: 160, y: 47.3808}
+  m_AnchoredPosition: {x: 0, y: 60}
+  m_SizeDelta: {x: 213.5914, y: 47.3808}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &563728651
 MonoBehaviour:
@@ -556,6 +556,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Scene Loader
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457350492694154304, guid: effc4a1b4db25455092f26dd7aee015d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7929676653023500404, guid: effc4a1b4db25455092f26dd7aee015d,
         type: 3}

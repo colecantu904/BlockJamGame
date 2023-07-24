@@ -13,6 +13,9 @@ public class slimeScript : MonoBehaviour
     public int slimeDamage = 3;
     public Vector2 direction;
 
+    public AnimationClip slimeSpawn;
+    public Animator animator;
+
 
     void Awake()
     {
@@ -20,7 +23,11 @@ public class slimeScript : MonoBehaviour
         SlimeHealthBar = GetComponentInChildren<SlimeHealthBar>();
         health = playerMain.slimeHealth;
         SlimeHealthBar.setHealth(health);
-       
+
+    }
+    private void Start()
+    {
+        animator.SetTrigger("spawn");
     }
 
     private void FixedUpdate()
@@ -44,8 +51,6 @@ public class slimeScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        //Debug.Log("Hit");
-   
         health -= damage;
         SlimeHealthBar.barDamage(damage);
         hit = true;
@@ -53,6 +58,15 @@ public class slimeScript : MonoBehaviour
         {
             Destroy(gameObject);
             playerMain.badKilled += 1;
+            if (playerMain.heavyDashing)
+            {
+                playerMain.score += 100 * playerMain.multiplier;
+            }
+            else
+            {
+                playerMain.score += 100;
+            }
+            
         }
     }
 }

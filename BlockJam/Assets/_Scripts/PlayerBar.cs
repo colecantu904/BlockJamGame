@@ -29,6 +29,5 @@ public class PlayerBar : MonoBehaviour
     public void barDamage(int damage)
     {
         slider.value -= damage;
-        Debug.Log("hit");
     }
 }

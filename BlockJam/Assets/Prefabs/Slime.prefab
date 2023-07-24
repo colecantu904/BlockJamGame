@@ -124,8 +124,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7873430828233644601}
   playerMain: {fileID: 0}
-  health: 10
+  health: 80
   SlimeHealthBar: {fileID: 0}
+  slimeDamage: 3
+  direction: {x: 0, y: 0}
+  slimeSpawn: {fileID: 7400000, guid: ac7eb26f3cda842e1906f12ab4c3000c, type: 2}
+  animator: {fileID: 8046604869102560750}
 --- !u!50 &7873430828233644601
 Rigidbody2D:
   serializedVersion: 4
@@ -185,7 +189,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15322971, y: -0.15322971}
+  m_Offset: {x: 0.35199147, y: -0.19211793}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -196,7 +200,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7716408, y: 1.2735996}
+  m_Size: {x: 1.9420265, y: 0.9711361}
   m_EdgeRadius: 0
 --- !u!1001 &2381777428741195947
 PrefabInstance:

@@ -155,8 +155,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 8890617786361307450}
   playerMove: {fileID: -4218087634085007796}
+  HealthScript: {fileID: 0}
   animator: {fileID: 8329872811749286485}
   sceneLoader: {fileID: 0}
+  multiplier: 5
   destination: {fileID: 2110193432505953411, guid: aec7afe24ca2048258cef3d383c39a41,
     type: 3}
   playerRigidbody2D: {fileID: 4573058311082371952}
@@ -168,13 +170,14 @@ MonoBehaviour:
     type: 3}
   shurikenDamage: 1
   shurikenSpeed: 20
-  sliceDamage: 3
-  sliceRadius: 3.5
+  sliceDamage: 2
+  sliceRadius: 4
   isDamaged: 0
+  heavySliceAngle: 90
   heavyDashDelay: 10
-  heavyDashDistance: 7.5
+  heavyDashDistance: 10
   heavyDashing: 0
-  heavyDashSpeed: 10
+  heavyDashSpeed: 7.5
   slimeHealth: 10
   slimeSpeed: 2
   slimeKnockback: 5
@@ -192,6 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMain: {fileID: 3408670592494285473}
+  Spawner: {fileID: 0}
   movespeed: 5
   distance: 5
 --- !u!114 &8890617786361307450
@@ -226,6 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMain: {fileID: 3408670592494285473}
+  dashAnimation: {fileID: 0}
+  heavySliceDamage: 15
 --- !u!114 &-7760879086506352853
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,11 +10,21 @@ using UnityEngine;
 
 public class playerMain : MonoBehaviour
 {
+
+    private void Awake()
+    {
+        score = 0;
+    }
+
+
     [SerializeField]
     internal playerInput playerInput;
 
     [SerializeField]
     internal playerMove playerMove;
+
+    [SerializeField]
+    internal HealthScript HealthScript;
 
     [SerializeField]
     internal Animator animator;
@@ -25,6 +35,7 @@ public class playerMain : MonoBehaviour
     // SCORE VARIABLES
     public static int score;
     public static int badKilled;
+    public int multiplier = 5;
 
 
     [Header("Movement Objects")]
@@ -50,7 +61,7 @@ public class playerMain : MonoBehaviour
     public bool heavyDashing = false;
     public float heavyDashSpeed = 10f;
     [Header("Slime")]
-    public int slimeHealth = 10;
+    public int slimeHealth = 30;
     public float slimeSpeed = 5f;
     public float slimeKnockback = 5f;
 

@@ -36,10 +36,27 @@ public class shurikenScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if (collision.tag == "Enemy")
         {
             collision.GetComponent<slimeScript>().TakeDamage(playerMain.shurikenDamage);
             Destroy(gameObject);
         }
+        if (collision.tag == "blueslime")
+        {
+            collision.GetComponent<blueSlime>().TakeDamage(playerMain.shurikenDamage);
+            Destroy(gameObject);
+        }
+        if (collision.tag == "red")
+        {
+            collision.GetComponent<redEnemyScript>().TakeDamage(playerMain.shurikenDamage);
+            Destroy(gameObject);
+        }
+        if (collision.tag == "yellow")
+        {
+            collision.GetComponent<yellowEnemy>().TakeDamage(playerMain.shurikenDamage);
+            Destroy(gameObject);
+        }
     }
+
+
 }

@@ -6,7 +6,7 @@ public class HealthScript : MonoBehaviour
 {
 
     public int playerHealth = 10;
-    private int health;
+    public int health;
 
     [SerializeField]
     playerMain playerMain;
@@ -35,33 +35,48 @@ public class HealthScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Enemy")
+        if (!playerMain.heavyDashing)
         {
-            if (!playerMain.heavyDashing)
+            if (collision.collider.tag == "Enemy")
+            {
+                 StartCoroutine(knockback(collision.collider.gameObject));
+                 // IF U WANT TO ADD ANOTHERl ENEMY A NEW CALL IS NEEDED
+                 playerhealthbar.barDamage(collision.collider.GetComponent<slimeScript>().slimeDamage);
+                 health -= collision.collider.GetComponent<slimeScript>().slimeDamage;
+            }
+            if (collision.collider.tag == "blueslime")
             {
                 StartCoroutine(knockback(collision.collider.gameObject));
-
-
-
-                // IF U WANT TO ADD ANOTHERl ENEMY A NEW CALL IS NEEDED
-                playerhealthbar.barDamage(collision.collider.GetComponent<slimeScript>().slimeDamage);
-                health -= collision.collider.GetComponent<slimeScript>().slimeDamage;
-                if (health <= 0)
-                {
-                    sceneLoader.deathScene();
-                }
+                playerhealthbar.barDamage(collision.collider.GetComponent<blueSlime>().slimeDamage);
+                health -= collision.collider.GetComponent<blueSlime>().slimeDamage;
+            }
+            if (health <= 0)
+            {
+                sceneLoader.deathScene();
             }
         }
     }
 
-
-    public IEnumerator knockback(GameObject slime)
+    public void takeDamage(int damage, GameObject enemy)
+    {
+        StartCoroutine(knockback(enemy));
+        playerhealthbar.barDamage(damage);
+        health -= damage;
+        if (health <= 0)
+        {
+            sceneLoader.deathScene();
+        }
+    }
+    public IEnumerator knockback(GameObject enemy)
     {
         
         playerMain.animator.Play(damaged.name);
-        direction = slime.GetComponent<slimeScript>().direction;
-        playerMain.playerMove.Move(direction*(Vector2.one*playerKnockback));
         playerMain.isDamaged = true;
+        if (enemy.tag == "Enemy") direction = enemy.GetComponent<slimeScript>().direction;
+        if (enemy.tag == "blueslime") direction = enemy.GetComponent<blueSlime>().direction;
+        if (enemy.tag == "red") direction = playerMain.shootLocation.transform.up*-1;
+
+        playerMain.playerMove.Move(direction * (Vector2.one * playerKnockback));
 
         // bound the player away from the center
 

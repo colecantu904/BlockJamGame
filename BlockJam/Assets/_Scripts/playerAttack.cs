@@ -6,10 +6,13 @@ public class playerAttack : MonoBehaviour
 {
     [SerializeField]
     playerMain playerMain;
-    public bool heavyAttacking = false;
-
     public AnimationClip dashAnimation;
+    [SerializeField] public int heavySliceDamage = 20;
 
+    private void Awake()
+    {
+       
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -33,11 +36,11 @@ public class playerAttack : MonoBehaviour
         }
         if (playerMain.playerInput.sliceDown)
         {
-            slice(3, playerMain.sliceRadius);
+            slice(5, playerMain.sliceRadius);
         }
         if (playerMain.playerInput.heavySliceDown)
         {
-            heavySliceAttack(3);
+            heavySliceAttack();
         }
     }
 
@@ -45,7 +48,6 @@ public class playerAttack : MonoBehaviour
     public void shuriken()
     {
         Instantiate(playerMain.shurikenGameObject,playerMain.shootLocation.transform.position,playerMain.shootLocation.transform.rotation);
-        Debug.Log("shurkiken");
     }
 
 
@@ -63,15 +65,13 @@ public class playerAttack : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            if (enemy.tag == "Enemy")
-            {
-                enemy.GetComponent<slimeScript>().TakeDamage(damage);
-                // IF YOU ADD ANOTHER ENEMY YOU NEED A SEPERATE CALL FOR ITS SCRIPT COMPONENT HERE
-            }
-            
+            if (enemy.tag == "Enemy") enemy.GetComponent<slimeScript>().TakeDamage(damage);
+            if (enemy.tag == "blueslime") enemy.GetComponent<blueSlime>().TakeDamage(damage);
+            if (enemy.tag == "red") enemy.GetComponent<redEnemyScript>().TakeDamage(damage);
+            if (enemy.tag == "yellow") enemy.GetComponent<yellowEnemy>().TakeDamage(damage);
         }
     }
-    public void heavySliceAttack(int damage)
+    public void heavySliceAttack()
     {
         playerMain.animator.Play(dashAnimation.name);
         playerMain.heavyDashing = true;
@@ -79,34 +79,28 @@ public class playerAttack : MonoBehaviour
         StartCoroutine(HeavyDash(playerMain.heavyDashDelay));
     }
 
-    private void OnDrawGizmosSelected()
-    {
-
-        Gizmos.DrawWireSphere(playerMain.shootLocation.transform.position, playerMain.sliceRadius);
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (playerMain.heavyDashing && collision.tag == "Enemy")
-        {
-            collision.GetComponent<slimeScript>().TakeDamage(3);
-            Debug.Log(collision);
-        }
+        if (collision.tag == "Enemy") collision.GetComponent<slimeScript>().TakeDamage(heavySliceDamage);
+        if (collision.tag == "blueslime") collision.GetComponent<blueSlime>().TakeDamage(heavySliceDamage);
+        if (collision.tag == "red") collision.GetComponent<redEnemyScript>().TakeDamage(heavySliceDamage);
+        if (collision.tag == "yellow") collision.GetComponent<yellowEnemy>().TakeDamage(heavySliceDamage);
+
+
     }
     private IEnumerator HeavyDash(float delay)
     {
         yield return new WaitForSeconds(delay);
-        Debug.Log("ashgsdfh");
         playerMain.GetComponent<playerMove>().Move(playerMain.shootLocation.transform.up * playerMain.heavyDashDistance);
         StartCoroutine(DontMoveYet());
-        
+        playerMain.heavyDashing=false;
+        FindObjectOfType<audioManage>().play("heavyDash");
         playerMain.playerRigidbody2D.position = Vector2.MoveTowards(playerMain.playerRigidbody2D.position, playerMain.destination.transform.position, playerMain.heavyDashSpeed);
     }
     private IEnumerator DontMoveYet()
     {
-        Debug.Log("not move");
-        yield return new WaitForSeconds(playerMain.heavyDashDelay);
-        playerMain.heavyDashing=false;
+        yield return new WaitForSeconds(3f);
         playerMain.GetComponent<BoxCollider2D>().isTrigger = false;
 
     }
