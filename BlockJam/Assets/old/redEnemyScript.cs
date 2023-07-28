@@ -6,12 +6,12 @@ public class redEnemyScript : MonoBehaviour
 {
     private Vector2 runLocation;
     private float holdTimer;
-    public float runSpeed = 2f;
+    public float runSpeed = .5f;
     public float delaytime = 2;
 
     public Rigidbody2D rb;
     public SpriteRenderer sr;
-    public Animator animator;
+    [SerializeField] Animator animator;
     [SerializeField] SlimeHealthBar SlimeHealthBar;
     [SerializeField] private playerMain playerMain;
 
@@ -21,6 +21,7 @@ public class redEnemyScript : MonoBehaviour
     private bool attacking;
     private int animations;
     public float attackRadius = 2f;
+    private bool redAttacking = false;
 
     public int health = 30;
     private int currentHealth;
@@ -34,8 +35,9 @@ public class redEnemyScript : MonoBehaviour
     }
     void Start()
     {
-        animator.SetTrigger("smoke");
+       // animator.SetTrigger("smoke");
         currentHealth = health;
+        runLocation = transform.position;
     }
 
     void Update()
@@ -48,10 +50,14 @@ public class redEnemyScript : MonoBehaviour
         {
             sr.flipX = false;
         }
+        moveLocation();
+    }
 
+    private void FixedUpdate()
+    {
         move();
     }
-    
+
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -75,6 +81,19 @@ public class redEnemyScript : MonoBehaviour
     {
         if (!attacking)
         {
+            rb.position = Vector2.MoveTowards(rb.position, runLocation, runSpeed);
+            if (rb.position.y == runLocation.y)
+            {
+                Debug.Log("stop running");
+                animator.SetBool("run", false);
+            }
+        }
+    }
+
+    public void moveLocation()
+    {
+        if (!attacking)
+        {
             int _time = Random.Range(3, 8);
             if (holdTimer < _time)
             {
@@ -84,8 +103,7 @@ public class redEnemyScript : MonoBehaviour
             {
                 runLocation.x = Random.Range(-8f, 8f);
                 runLocation.y = Random.Range(-8f, 8f);
-                rb.position = runLocation;
-                animator.SetTrigger("smoke");
+                animator.SetBool("run", true);
                 holdTimer = 0;
             }
         }
@@ -101,6 +119,8 @@ public class redEnemyScript : MonoBehaviour
 
     private IEnumerator slice()
     {
+        holdTimer = 0;
+        runLocation = transform.position;   
         attacking = true;
         animations = Random.Range(0, 2);
         if (animations == 0)

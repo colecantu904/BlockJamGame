@@ -98,10 +98,10 @@ public class playerAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy") collision.GetComponent<slimeScript>().TakeDamage(heavySliceDamage);
-        if (collision.tag == "blueslime") collision.GetComponent<blueSlime>().TakeDamage(heavySliceDamage);
-        if (collision.tag == "red") collision.GetComponent<redEnemyScript>().TakeDamage(heavySliceDamage);
-        if (collision.tag == "yellow") collision.GetComponent<yellowEnemy>().TakeDamage(heavySliceDamage);
+        if (collision.tag == "Enemy" && heavyDashing) collision.GetComponent<slimeScript>().TakeDamage(heavySliceDamage);
+        if (collision.tag == "blueslime" && heavyDashing) collision.GetComponent<blueSlime>().TakeDamage(heavySliceDamage);
+        if (collision.tag == "red" && heavyDashing) collision.GetComponent<redEnemyScript>().TakeDamage(heavySliceDamage);
+        if (collision.tag == "yellow" && heavyDashing) collision.GetComponent<yellowEnemy>().TakeDamage(heavySliceDamage);
 
 
     }
@@ -110,13 +110,13 @@ public class playerAttack : MonoBehaviour
         yield return new WaitForSeconds(heavyDashDelay);
         playerMain.playerMove.Move(shootLocation.transform.up * heavyDashDistance);
         StartCoroutine(DontMoveYet());
-        heavyDashing = false;
         Debug.Log("Dashing Heacy");
         FindObjectOfType<audioManage>().play("heavyDash");
         playerMain.playerMove.playerRigidbody2D.position = Vector2.MoveTowards(playerMain.playerMove.playerRigidbody2D.position, playerMain.playerMove.destination.transform.position, heavyDashSpeed);
     }
     private IEnumerator DontMoveYet()
     {
+        heavyDashing = false;
         yield return new WaitForSeconds(2.7f);
         playerMain.GetComponent<BoxCollider2D>().isTrigger = false;
 
