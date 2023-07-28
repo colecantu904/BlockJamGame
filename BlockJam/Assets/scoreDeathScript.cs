@@ -10,7 +10,7 @@ public class scoreDeathScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text.text = "Score: " + playerMain.score.ToString();
+        text.text = "Score: " + logicScript.score.ToString();
     }
 
     // Update is called once per frame

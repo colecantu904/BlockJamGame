@@ -6,24 +6,26 @@ using UnityEngine.UIElements;
 
 public class playerMove : MonoBehaviour
 {
-    [SerializeField]
-    playerMain playerMain;
-    [SerializeField] public GameObject Spawner;
+    [SerializeField] playerMain playerMain;
     private bool outOfBounds = false;
 
-    //public GameObject destination;
-    //public SpriteRenderer sr;
+    [Header("Objects")]
+    public GameObject destination;
+    public Rigidbody2D playerRigidbody2D;
+    public GameObject Player;
+    public GameObject Spawner;
+
+
 
     [Header("variables")]
     public float movespeed = 5f;
     Vector2 movement;
-    //public Rigidbody2D rb;
     public float distance = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerMain.destination.transform.position = playerMain.playerRigidbody2D.transform.position;
+        destination.transform.position = playerRigidbody2D.transform.position;
     }
 
     // Update is called once per frame
@@ -33,7 +35,7 @@ public class playerMove : MonoBehaviour
         movement.y = playerMain.playerInput.yplayer;
         if (movement.sqrMagnitude > 0)
         {
-            if ((playerMain.playerInput.xDown || playerMain.playerInput.yDown) && !playerMain.heavyDashing && !playerMain.isDamaged&&!outOfBounds)
+            if ((playerMain.playerInput.xDown || playerMain.playerInput.yDown) && !playerMain.attackScript.heavyDashing && !playerMain.attackScript.isDamaged &&!outOfBounds)
             {
                 Move((Vector2)playerMain.GetComponent<Renderer>().bounds.size * movement * distance);
             }
@@ -45,18 +47,18 @@ public class playerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!outOfBounds) playerMain.playerRigidbody2D.position = Vector2.MoveTowards(playerMain.playerRigidbody2D.position, playerMain.destination.transform.position, movespeed);
+        if (!outOfBounds) playerRigidbody2D.position = Vector2.MoveTowards(playerRigidbody2D.position, destination.transform.position, movespeed);
         else if (outOfBounds)
         {
-            playerMain.destination.transform.position = playerMain.playerRigidbody2D.transform.position;
-            playerMain.playerRigidbody2D.position = Vector2.MoveTowards(transform.position, Spawner.transform.position, movespeed);
+            destination.transform.position = playerRigidbody2D.transform.position;
+            playerRigidbody2D.position = Vector2.MoveTowards(transform.position, Spawner.transform.position, movespeed);
 
         }
     }
 
     public void Move(Vector2 length)
     {
-        playerMain.destination.transform.position = (Vector2)transform.position + length;
+        destination.transform.position = (Vector2)transform.position + length;
         
     }
 

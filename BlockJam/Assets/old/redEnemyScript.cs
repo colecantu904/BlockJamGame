@@ -59,14 +59,14 @@ public class redEnemyScript : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
-            playerMain.badKilled += 1;
-            if (playerMain.heavyDashing)
+            logicScript.badKilled += 1;
+            if (playerMain.attackScript.heavyDashing)
             {
-                playerMain.score += 300 * playerMain.multiplier;
+                logicScript.score += 300 * playerMain.logicScript.multiplier;
             }
             else
             {
-                playerMain.score += 300;
+                logicScript.score += 300;
             }
         }
     }

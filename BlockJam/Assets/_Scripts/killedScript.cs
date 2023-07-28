@@ -11,7 +11,7 @@ public class killedScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text.text = "Enemies Killed: " + playerMain.badKilled.ToString();
+        text.text = "Enemies Killed: " + logicScript.badKilled.ToString();
     }
 
     // Update is called once per frame

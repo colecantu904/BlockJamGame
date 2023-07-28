@@ -4,24 +4,31 @@ using UnityEngine;
 
 public class slimeScript : MonoBehaviour
 {
-    [SerializeField] public Rigidbody2D rb;
-    [SerializeField] private playerMain playerMain;
     [SerializeField] private int health;
-    private bool hit = false;
-    [SerializeField] SlimeHealthBar SlimeHealthBar;
+    [SerializeField] private bool hit = false;
 
+    [Header("Variables")]
+    public int slimeHealth = 30;
+    public float slimeSpeed = 5f;
+    public float slimeKnockback = 5f;
     public int slimeDamage = 3;
     public Vector2 direction;
 
+    [Header("Objects")]
+    [SerializeField] logicScript logicScript;
+    [SerializeField] SlimeHealthBar SlimeHealthBar;
+    [SerializeField] public Rigidbody2D rb;
+    [SerializeField] private playerMain playerMain;
     public AnimationClip slimeSpawn;
     public Animator animator;
+    
 
 
     void Awake()
     {
         playerMain = GameObject.FindGameObjectWithTag("Player").GetComponent<playerMain>();
         SlimeHealthBar = GetComponentInChildren<SlimeHealthBar>();
-        health = playerMain.slimeHealth;
+        health = slimeHealth;
         SlimeHealthBar.setHealth(health);
 
     }
@@ -40,11 +47,11 @@ public class slimeScript : MonoBehaviour
         if (!hit)
         {
             direction = (dest.position - transform.position).normalized;
-            rb.velocity = direction * playerMain.slimeSpeed;
+            rb.velocity = direction * slimeSpeed;
         }
         else if (hit)
         {
-            rb.velocity = playerMain.shootLocation.transform.up * playerMain.slimeKnockback;
+            rb.velocity = playerMain.attackScript.shootLocation.transform.up * slimeKnockback;
             hit = false;
         }
     }
@@ -57,14 +64,14 @@ public class slimeScript : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
-            playerMain.badKilled += 1;
-            if (playerMain.heavyDashing)
+            logicScript.badKilled += 1;
+            if (playerMain.attackScript.heavyDashing)
             {
-                playerMain.score += 100 * playerMain.multiplier;
+                logicScript.score += 100 * logicScript.multiplier;
             }
             else
             {
-                playerMain.score += 100;
+                logicScript.score += 100;
             }
             
         }

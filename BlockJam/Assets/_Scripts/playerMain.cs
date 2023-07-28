@@ -11,11 +11,13 @@ using UnityEngine;
 public class playerMain : MonoBehaviour
 {
 
-    private void Awake()
-    {
-        score = 0;
+    void Awake()
+    {       
+
     }
 
+    [SerializeField]
+    internal logicScript logicScript;
 
     [SerializeField]
     internal playerInput playerInput;
@@ -32,38 +34,14 @@ public class playerMain : MonoBehaviour
     [SerializeField]
     internal sceneLoaderScript sceneLoader;
 
-    // SCORE VARIABLES
-    public static int score;
-    public static int badKilled;
-    public int multiplier = 5;
+    [SerializeField]
+    internal playerAttack attackScript;
 
+    [SerializeField]
+    internal playerAnimate playerAnimate;
 
     [Header("Movement Objects")]
-    public GameObject destination;
-    public Rigidbody2D playerRigidbody2D;
     public SpriteRenderer rend;
-    public GameObject Player;
-
-    [Header("Attack Objects")]
-    public GameObject shurikenGameObject;
-    public GameObject shootLocation;
-    public int shurikenDamage = 1;
-    public float shurikenSpeed = 20f;
-    public int sliceDamage = 3;
-    public float sliceRadius = 5f;
-    public bool isDamaged;
-    public float heavySliceAngle = 90f;
-
-
-    [Header("Heavy Slice")]
-    public float heavyDashDelay = 10f;
-    public float heavyDashDistance = 7.5f;
-    public bool heavyDashing = false;
-    public float heavyDashSpeed = 10f;
-    [Header("Slime")]
-    public int slimeHealth = 30;
-    public float slimeSpeed = 5f;
-    public float slimeKnockback = 5f;
 
     [Header("UI Objects")]
     public int health;

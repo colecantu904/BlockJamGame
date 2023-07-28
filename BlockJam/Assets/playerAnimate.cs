@@ -1,24 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
-public class Animation : MonoBehaviour
+public class playerAnimate : MonoBehaviour
 {
     [SerializeField]
-    playerMain playerMain;
+    internal playerMain playerMain;
 
-
-    // animations movement variables
-    private float holdtimer;
-
-
-    void Start()
-    {
-        
-    }
-
- 
     void Update()
     {
         //flip the player in the right direction for idle
@@ -32,12 +20,12 @@ public class Animation : MonoBehaviour
         }
 
 
-        if (playerMain.heavyDashing)
+        if (playerMain.attackScript.heavyDashing)
         {
             // make the heavy dash animation bruh
             playerMain.animator.SetTrigger("heavyDash");
         }
-        else if (!playerMain.isDamaged)
+        else if (!playerMain.attackScript.isDamaged)
         {
             // horizantal dash "animation"
             if (playerMain.playerInput.xDown)
@@ -67,7 +55,5 @@ public class Animation : MonoBehaviour
                 }
             }
         }
-        
-
     }
 }

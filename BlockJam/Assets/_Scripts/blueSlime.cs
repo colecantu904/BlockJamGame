@@ -46,7 +46,7 @@ public class blueSlime : MonoBehaviour
     {
       if (hit)
        {
-            rb.velocity = playerMain.shootLocation.transform.up;
+            rb.velocity = playerMain.attackScript.shootLocation.transform.up;
             hit = false;
         }
     }
@@ -59,14 +59,14 @@ public class blueSlime : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
-            playerMain.badKilled += 1;
-            if (playerMain.heavyDashing)
+            logicScript.badKilled += 1;
+            if (playerMain.attackScript.heavyDashing)
             {
-                playerMain.score += 200 * playerMain.multiplier;
+                logicScript.score += 200 * playerMain.logicScript.multiplier;
             }
             else
             {
-                playerMain.score += 200;
+                logicScript.score += 200;
             }
         }
     }

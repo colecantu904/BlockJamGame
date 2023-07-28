@@ -11,7 +11,7 @@ public class shurikenScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb.velocity = transform.up * playerMain.shurikenSpeed;
+        rb.velocity = transform.up * playerMain.attackScript.shurikenSpeed;
     }
     private void Awake()
     {
@@ -38,22 +38,22 @@ public class shurikenScript : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            collision.GetComponent<slimeScript>().TakeDamage(playerMain.shurikenDamage);
+            collision.GetComponent<slimeScript>().TakeDamage(playerMain.attackScript.shurikenDamage);
             Destroy(gameObject);
         }
         if (collision.tag == "blueslime")
         {
-            collision.GetComponent<blueSlime>().TakeDamage(playerMain.shurikenDamage);
+            collision.GetComponent<blueSlime>().TakeDamage(playerMain.attackScript.shurikenDamage);
             Destroy(gameObject);
         }
         if (collision.tag == "red")
         {
-            collision.GetComponent<redEnemyScript>().TakeDamage(playerMain.shurikenDamage);
+            collision.GetComponent<redEnemyScript>().TakeDamage(playerMain.attackScript.shurikenDamage);
             Destroy(gameObject);
         }
         if (collision.tag == "yellow")
         {
-            collision.GetComponent<yellowEnemy>().TakeDamage(playerMain.shurikenDamage);
+            collision.GetComponent<yellowEnemy>().TakeDamage(playerMain.attackScript.shurikenDamage);
             Destroy(gameObject);
         }
     }

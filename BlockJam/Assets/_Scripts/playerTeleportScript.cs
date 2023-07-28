@@ -27,17 +27,17 @@ public class playerTeleportScript : MonoBehaviour
     {
         if (playerMain.playerInput.teleport1 && !playerMain.playerInput.teleport1out)
         {
-            Instantiate(Uteleport, playerMain.shootLocation.transform.position, playerMain.transform.rotation);
+            Instantiate(Uteleport, playerMain.attackScript.shootLocation.transform.position, playerMain.transform.rotation);
             playerMain.playerInput.teleport1out = true;
         }
         if (playerMain.playerInput.teleport2 && !playerMain.playerInput.teleport2out)
         {
-            Instantiate(Iteleport, playerMain.shootLocation.transform.position, playerMain.transform.rotation);
+            Instantiate(Iteleport, playerMain.attackScript.shootLocation.transform.position, playerMain.transform.rotation);
             playerMain.playerInput.teleport2out = true;
         }
         if (playerMain.playerInput.teleport3 && !playerMain.playerInput.teleport3out)
         {
-            Instantiate(Oteleport, playerMain.shootLocation.transform.position, playerMain.transform.rotation);
+            Instantiate(Oteleport, playerMain.attackScript.shootLocation.transform.position, playerMain.transform.rotation);
             playerMain.playerInput.teleport3out = true;
         }
     }

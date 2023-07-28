@@ -17,6 +17,6 @@ public class scoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Score: " + playerMain.score.ToString();
+        text.text = "Score: " + logicScript.score.ToString();
     }
 }

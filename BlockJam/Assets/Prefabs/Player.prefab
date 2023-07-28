@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: -4218087634085007796}
   - component: {fileID: 8890617786361307450}
   - component: {fileID: 3081840959170819403}
-  - component: {fileID: -7760879086506352853}
   - component: {fileID: 4280121628381868635}
   - component: {fileID: 5072835507858341169}
+  - component: {fileID: 1578697663820086945}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -158,12 +158,10 @@ MonoBehaviour:
   HealthScript: {fileID: 0}
   animator: {fileID: 8329872811749286485}
   sceneLoader: {fileID: 0}
+  attackScript: {fileID: 3081840959170819403}
+  playerAnimate: {fileID: 1578697663820086945}
   multiplier: 5
-  destination: {fileID: 2110193432505953411, guid: aec7afe24ca2048258cef3d383c39a41,
-    type: 3}
-  playerRigidbody2D: {fileID: 4573058311082371952}
   rend: {fileID: 7642548394211615235}
-  Player: {fileID: 0}
   shurikenGameObject: {fileID: 7457354038847562516, guid: 058a6ad55630daa4eb23e909a1f86fcc,
     type: 3}
   shootLocation: {fileID: 2160920086233010446, guid: 5b9862ccd7fe0f542a0f1fd934a7871b,
@@ -195,7 +193,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMain: {fileID: 3408670592494285473}
-  Spawner: {fileID: 0}
+  destination: {fileID: 2110193432505953411, guid: aec7afe24ca2048258cef3d383c39a41,
+    type: 3}
+  playerRigidbody2D: {fileID: 4573058311082371952}
+  Player: {fileID: 2354510131960673877}
+  Spawner: {fileID: 1340598837161554264, guid: 42f631e6ba44b264c9bd2963d7e32761, type: 3}
   movespeed: 5
   distance: 5
 --- !u!114 &8890617786361307450
@@ -231,20 +233,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMain: {fileID: 3408670592494285473}
   dashAnimation: {fileID: 0}
+  shurikenGameObject: {fileID: 7457354038847562516, guid: 058a6ad55630daa4eb23e909a1f86fcc,
+    type: 3}
+  shootLocation: {fileID: 2160920086233010446, guid: 5b9862ccd7fe0f542a0f1fd934a7871b,
+    type: 3}
+  shurikenDamage: 1
+  shurikenSpeed: 20
+  sliceDamage: 3
+  sliceRadius: 5
+  isDamaged: 0
+  heavySliceAngle: 90
   heavySliceDamage: 15
---- !u!114 &-7760879086506352853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2354510131960673877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d0d22fa0eba04808b554927d57d472c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMain: {fileID: 3408670592494285473}
 --- !u!61 &4280121628381868635
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -306,3 +305,16 @@ MonoBehaviour:
   Uteleport: {fileID: 0}
   Iteleport: {fileID: 0}
   Oteleport: {fileID: 0}
+--- !u!114 &1578697663820086945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2354510131960673877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778ff564b5fc9164b82d1c59b1c1e698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMain: {fileID: 3408670592494285473}

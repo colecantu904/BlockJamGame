@@ -27,7 +27,7 @@ public class teleport3Script : MonoBehaviour
         if (playerMain.playerInput.teleport3 && playerMain.playerInput.teleport3out)
         {
             playerMain.transform.position = transform.position;
-            playerMain.destination.transform.position = transform.position;
+            playerMain.playerMove.destination.transform.position = transform.position;
             StartCoroutine(teleport());
             // need to make a start couroutien for the smoke animation to destroy the game object and set it to false            
         }

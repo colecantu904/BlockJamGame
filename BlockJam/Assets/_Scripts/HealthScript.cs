@@ -30,12 +30,12 @@ public class HealthScript : MonoBehaviour
         health = playerHealth;
         playerhealthbar.setHealth(playerHealth);
 
-        playerMain.badKilled = 0;
+        logicScript.badKilled = 0;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!playerMain.heavyDashing)
+        if (!playerMain.attackScript.heavyDashing)
         {
             if (collision.collider.tag == "Enemy")
             {
@@ -71,10 +71,10 @@ public class HealthScript : MonoBehaviour
     {
         
         playerMain.animator.Play(damaged.name);
-        playerMain.isDamaged = true;
+        playerMain.attackScript.isDamaged = true;
         if (enemy.tag == "Enemy") direction = enemy.GetComponent<slimeScript>().direction;
         if (enemy.tag == "blueslime") direction = enemy.GetComponent<blueSlime>().direction;
-        if (enemy.tag == "red") direction = playerMain.shootLocation.transform.up*-1;
+        if (enemy.tag == "red") direction = playerMain.attackScript.shootLocation.transform.up*-1;
 
         playerMain.playerMove.Move(direction * (Vector2.one * playerKnockback));
 
@@ -82,7 +82,7 @@ public class HealthScript : MonoBehaviour
 
         yield return new WaitForSeconds(hurtTime);
 
-        playerMain.isDamaged = false;
+        playerMain.attackScript.isDamaged = false;
     }
 
 
