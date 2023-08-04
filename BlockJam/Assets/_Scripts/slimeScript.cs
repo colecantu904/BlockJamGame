@@ -22,6 +22,9 @@ public class slimeScript : MonoBehaviour
     public AnimationClip slimeSpawn;
     public Animator animator;
     
+    // componenets to retrieve through code: RigidBody, Animator
+    // list of values for scriptable object: knockback, damage, moveSpeed, maxHealth, logicScript
+
 
 
     void Awake()
@@ -42,6 +45,8 @@ public class slimeScript : MonoBehaviour
         Move(playerMain.transform);
     }
 
+    // Make an "Simple Movment" function that takes the 'destination gameobject' as well as the rb of enemy calling the function.
+    // rewrite the code so that the component is called within the script and no the inspector.
     private void Move(Transform dest)
     {
         if (!hit)
@@ -56,6 +61,10 @@ public class slimeScript : MonoBehaviour
         }
     }
 
+
+    
+
+    // redesign enemy code so that the fucntion derives from enemy class, takes damage and current health as a argument and returns new current health.
     public void TakeDamage(int damage)
     {
         health -= damage;
